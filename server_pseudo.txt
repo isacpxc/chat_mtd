@@ -1,0 +1,41 @@
+Classe Servidor
+    Inicialização(host = nome do host do socket, porta = 12345)
+        Defina host, porta
+        Crie um novo socket e vincule-o ao host e à porta
+        Inicie a escuta do socket
+        Inicialize listas vazias para clientes e nomes
+
+    Função broadcast(mensagem)
+        Para cada cliente na lista de clientes
+            Envie a mensagem para o cliente
+
+    Função handle(cliente)
+        Enquanto Verdadeiro
+            Tente
+                Receba a mensagem do cliente
+                Se a mensagem for '/sair'
+                    Encontre o índice do cliente na lista de clientes
+                    Remova o cliente da lista de clientes e feche a conexão
+                    Remova o nome correspondente da lista de nomes
+                    Envie uma mensagem para todos os outros clientes informando que este cliente foi desconectado
+                    Pare o loop
+                Imprima a mensagem
+                Anexe a mensagem ao arquivo 'log.txt'
+                Crie uma mensagem com timestamp e envie para todos os clientes
+            Exceto
+                Faça o mesmo que no bloco '/sair'
+
+    Função receive()
+        Enquanto Verdadeiro
+            Aceite uma nova conexão de cliente
+            Envie 'NICK' para o cliente e receba o nome do cliente em resposta
+            Adicione o nome e o cliente às respectivas listas
+            Informe todos os outros clientes que este cliente entrou no chat
+            Envie uma mensagem para o novo cliente informando que ele está conectado ao servidor
+
+            Inicie uma nova thread para lidar com este cliente
+
+Se este script for o principal executado
+    Abra 'log.txt' e escreva que o chat foi iniciado hoje
+    Imprima 'Chat iniciado !'
+    Crie um novo Servidor e comece a receber mensagens

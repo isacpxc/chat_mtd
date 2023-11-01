@@ -1,0 +1,26 @@
+Solicite ao usuário para inserir o endereço do servidor e escolher um nome
+
+Crie um novo socket cliente e conecte-se ao servidor
+
+Função receive()
+    Enquanto Verdadeiro
+        Tente
+            Receba uma mensagem do servidor
+            Se a mensagem for 'NICK'
+                Envie o nome escolhido para o servidor
+            Caso contrário, imprima a mensagem
+        Exceto
+            Imprima "Conexão encerrada!"
+            Pare o loop
+
+Função write()
+    Enquanto Verdadeiro
+        Solicite ao usuário para inserir uma mensagem
+        Se a mensagem for '/sair'
+            Envie a mensagem para o servidor e feche a conexão
+            Pare o loop
+        Envie a mensagem com timestamp e nome para o servidor
+
+Inicie uma nova thread para receber mensagens do servidor
+
+Inicie uma nova thread para enviar mensagens para o servidor
